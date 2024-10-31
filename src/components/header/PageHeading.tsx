@@ -1,5 +1,8 @@
-import React from "react";
 
 export default function PageHeading() {
-  return <div>PageHeading</div>;
+  return (
+    <h1>
+      Give Feedback <span>Pubilcly</span>
+    </h1>
+  );
 }
