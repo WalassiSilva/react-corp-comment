@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { MAX_CHARACTERS } from "../../constants";
+import { MAX_CHARACTERS } from "../../lib/constants";
 
-export default function FeedbackForm() {
+type FeedbackFormProps = {
+  onAttToList: (text: string) => void;
+};
+export default function FeedbackForm({ onAttToList }: FeedbackFormProps) {
   const [text, setText] = useState("");
   const charCount = MAX_CHARACTERS - text.length;
 
@@ -10,8 +13,16 @@ export default function FeedbackForm() {
     if (newText.length > MAX_CHARACTERS) return;
     setText(newText);
   };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    onAttToList(text);
+    setText("");
+  };
+
   return (
-    <form className="form">
+    <form onSubmit={handleSubmit} className="form">
       <textarea
         id="feedback-textarea"
         placeholder="Write your feedback"
