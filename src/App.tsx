@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Footer from "./components/layout/Footer";
 import HashtagList from "./components/HashtagList";
 import { TFeedbackItem } from "./lib/types";
@@ -8,7 +8,24 @@ function App() {
   const [feedbackItems, setFeedbackItems] = useState<TFeedbackItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedCompany, setSelectedCompany] = useState("");
 
+  const companyList = useMemo(
+    () =>
+      feedbackItems
+        .map((feedbackItem) => feedbackItem.company.toLowerCase())
+        .filter((company, index, array) => array.indexOf(company) === index),
+    [feedbackItems]
+  );
+
+  const filteredFeedbackItems = useMemo(
+    () =>
+      feedbackItems.filter(
+        (feedbackItem) =>
+          feedbackItem.company.toLowerCase() === selectedCompany.toLowerCase()
+      ),
+    [feedbackItems, selectedCompany]
+  );
   const handleAddToList = async (text: string) => {
     const company = text
       .split(" ")
@@ -36,6 +53,10 @@ function App() {
         },
       }
     );
+  };
+
+  const handleSelectedCompany = (company: string) => {
+    setSelectedCompany(company);
   };
 
   useEffect(() => {
@@ -67,12 +88,15 @@ function App() {
     <div className="app">
       <Footer />
       <Container
-        feedbackItems={feedbackItems}
+        feedbackItems={selectedCompany ? filteredFeedbackItems : feedbackItems}
         isLoading={isLoading}
         errorMessage={errorMessage}
         handleAddToList={handleAddToList}
       />
-      <HashtagList />
+      <HashtagList
+        companyList={companyList}
+        handleSelectedCompany={handleSelectedCompany}
+      />
     </div>
   );
 }
