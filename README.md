@@ -1,27 +1,33 @@
-# React + TypeScript + Vite
+# React Corp Comment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um sistema para compartilhamento de feedbacks sobre empresas, permitindo visualização e filtragem por hashtags.
 
-Currently, two official plugins are available:
+## Índice
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Visão Geral](#visão-geral)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Resultado](#resultado)
 
-## Expanding the ESLint configuration
+## Visão Geral
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+React Corp Comment é um projeto criado com **React**, **Vite**, **TypeScript**, e **Zustand**. Ele permite que usuários postem feedbacks sobre empresas e visualizem esses feedbacks de forma organizada, com filtros por hashtags.
 
-- Configure the top-level `parserOptions` property like this:
+## Funcionalidades
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- Adicionar feedbacks com hashtags para fácil categorização.
+- Filtrar feedbacks por hashtags.
+- Interface amigável para visualização de feedbacks.
+- Dados salvos na API por 30 minutos.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Tecnologias Utilizadas
+
+- **React** e **Vite**: Framework e builder de alta performance para desenvolvimento em React.
+- **TypeScript**: Linguagem para garantir tipagem e melhor manutenção do código.
+- **Zustand**: Gerenciamento de estado leve e eficiente.
+
+## Projeto
+
+Para ver o resultado, clique no link abaixo:
+
+https://react-corp-comment.vercel.app/
